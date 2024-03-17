@@ -32,6 +32,25 @@ public class UsingTimeComplexity {
         }
         System.out.println(sum);
     }
+    //백준 1546
+    public void getAverage(){
+        Scanner scanner = new Scanner(System.in);
+        int count = scanner.nextInt();
+        int[] points = new int[count];
+        double sum =0;
+        int max=0;
+        for (int i = 0; i < points.length; i++) {
+            points[i] = scanner.nextInt();
+        }
+        for (int i = 0; i < points.length; i++) {
+            max = max > points[i]?max:points[i];
+        }
+
+        for (int i = 0; i < points.length; i++) {
+            sum = sum + ((double)points[i]/max)*100;
+        }
+        System.out.println(sum / count);
+    }
 
     
 }

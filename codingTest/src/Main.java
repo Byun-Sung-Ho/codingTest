@@ -3,6 +3,7 @@ public class Main {
         UsingTimeComplexity usingTimeComplexity= new UsingTimeComplexity();
 
 //        usingTimeComplexity.sortingNumber(5);
-        usingTimeComplexity.sumNumbers();
+//        usingTimeComplexity.sumNumbers();
+        usingTimeComplexity.getAverage();
     }
 }

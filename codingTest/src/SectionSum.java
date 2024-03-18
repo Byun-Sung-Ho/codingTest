@@ -26,4 +26,36 @@ public class SectionSum {
             System.out.println(sums[j] - sums[i-1]);
         }
     }
+
+    //백준 11660
+    public void PlaneSum(){
+        Scanner scanner = new Scanner(System.in);
+
+        int arraySize = scanner.nextInt();
+        int count = scanner.nextInt();
+
+        int[][] arrs = new int[arraySize][arraySize];
+        int[][] sums = new int[arraySize+1][arraySize+1];
+
+        for (int i = 0; i < arraySize; i++) {
+            for (int j = 0; j < arraySize; j++) {
+                arrs[i][j] = scanner.nextInt();
+            }
+        }
+
+        for (int i = 1; i < arraySize+1; i++) {
+            for (int j = 1; j < arraySize+1; j++) {
+                sums[i][j] = sums[i][j-1] + sums[i-1][j] - sums[i-1][j-1] + arrs[i-1][j-1];
+            }
+        }
+
+        for (int i = 0; i < count; i++) {
+            int x1 = scanner.nextInt();
+            int y1 = scanner.nextInt();
+            int x2 = scanner.nextInt();
+            int y2 = scanner.nextInt();
+
+            System.out.println(sums[x2][y2] - sums[x2][y1-1] - sums[x1-1][y2] + sums[x1-1][y1-1]);
+        }
+    }
 }

@@ -3,6 +3,6 @@ public class Main {
         UsingTimeComplexity usingTimeComplexity= new UsingTimeComplexity();
         SectionSum sectionSum = new SectionSum();
 
-        sectionSum.ItoJSum();
+        sectionSum.PlaneSum();
     }
 }

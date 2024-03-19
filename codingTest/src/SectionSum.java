@@ -58,4 +58,37 @@ public class SectionSum {
             System.out.println(sums[x2][y2] - sums[x2][y1-1] - sums[x1-1][y2] + sums[x1-1][y1-1]);
         }
     }
+    // 백준 10986
+    public void RestSum(){
+        Scanner scanner = new Scanner(System.in);
+        int N = scanner.nextInt();
+        int M = scanner.nextInt();
+
+        long res=0;
+        long[] sums = new long[N];
+        long[] rests = new long[M];
+
+        sums[0] = scanner.nextInt();
+
+        for (int i = 1; i < N; i++) {
+            sums[i] = sums[i-1] + scanner.nextInt();
+        }
+
+        for (int i = 0; i < N; i++) {
+            int rest = (int)(sums[i] % M);
+            if (rest == 0) {
+                res++;
+            }
+
+            rests[rest]++;
+        }
+
+        for (int i = 0; i < M; i++) {
+            if (rests[i] > 1) {
+                res = res + (rests[i] * (rests[i] - 1) / 2);
+            }
+        }
+
+        System.out.println(res);
+    }
 }

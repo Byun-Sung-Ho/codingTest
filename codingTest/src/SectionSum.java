@@ -91,4 +91,37 @@ public class SectionSum {
 
         System.out.println(res);
     }
+
+    public void ContinuousNaturalNumberSum(){
+        Scanner scanner = new Scanner(System.in);
+
+        int N = scanner.nextInt();
+        int[] numArr = new int[N];
+        int res=0;
+        int startIndex=0;
+        int endIndex=0;
+
+        for (int i = 1; i <= numArr.length; i++) {
+            numArr[i-1] = i;
+        }
+
+        int sum = numArr[startIndex];
+        while (endIndex != numArr.length - 1) {
+            System.out.println(sum);
+            if (sum == N){
+                res++;
+                endIndex++;
+                sum = sum + numArr[endIndex];
+            }
+            else if (sum>N) {
+                sum = sum - numArr[startIndex];
+                startIndex++;
+            }else {
+                endIndex++;
+                sum = sum + numArr[endIndex];
+            }
+        }
+        res++;
+        System.out.println(res);
+    }
 }

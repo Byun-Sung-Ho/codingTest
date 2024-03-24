@@ -92,7 +92,7 @@ public class SectionSum {
         System.out.println(res);
     }
 
-    public void ContinuousNaturalNumberSum(){
+    public void ContinuousSerialNaturalNumberSum(){
         Scanner scanner = new Scanner(System.in);
 
         int N = scanner.nextInt();
@@ -122,6 +122,37 @@ public class SectionSum {
             }
         }
         res++;
+        System.out.println(res);
+    }
+
+    public void AdjacentNaturalNumberSum(){
+        Scanner scanner = new Scanner(System.in);
+
+        int N = scanner.nextInt();
+        int M = scanner.nextInt();
+        int[] numArr = new int[N];
+
+        for (int i = 0; i < numArr.length; i++) {
+            numArr[i] = scanner.nextInt();
+        }
+        Arrays.sort(numArr);
+
+        int startIndex=0;
+        int endIndex=numArr.length-1;
+        int sum=0;
+        int res=0;
+        while (startIndex != endIndex) {
+            sum = numArr[startIndex] + numArr[endIndex];
+            if (sum == M) {
+                res++;
+                startIndex++;
+            } else if (sum < M){
+                startIndex++;
+            }
+            else {
+                endIndex--;
+            }
+        }
         System.out.println(res);
     }
 }

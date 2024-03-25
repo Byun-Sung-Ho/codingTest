@@ -155,4 +155,6 @@ public class SectionSum {
         }
         System.out.println(res);
     }
+
+    //백준 1253
 }

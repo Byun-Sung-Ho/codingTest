@@ -157,4 +157,41 @@ public class SectionSum {
     }
 
     //백준 1253
+    public void FindGoodNumber(){
+        Scanner scanner = new Scanner(System.in);
+        int size = scanner.nextInt();
+        int res = 0;
+
+        long[] numArr = new long[size];
+        for (int i = 0; i < numArr.length; i++) {
+            numArr[i] = scanner.nextInt();
+        }
+        Arrays.sort(numArr);
+
+        for (int i = 0; i < size; i++) {
+            long target = numArr[i];
+
+            int si=0;
+            int ei=size-1;
+
+            while (si < ei) {
+                if (numArr[si] + numArr[ei] == target) {
+                    if (si!=i && ei!=i) {
+                        res++;
+                        break;
+                    } else if (si == i) {
+                        si++;
+                    }else {
+                        ei--;
+                    }
+                } else if (numArr[si] + numArr[ei] < target) {
+                    si++;
+                }else {
+                    ei--;
+                }
+            }
+        }
+
+        System.out.println(res);
+    }
 }

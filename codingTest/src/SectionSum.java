@@ -194,4 +194,84 @@ public class SectionSum {
 
         System.out.println(res);
     }
+
+    //백준 12891
+    public void DNApassword(){
+        Scanner scanner = new Scanner(System.in);
+
+        int totalSize = scanner.nextInt();
+        int partSize = scanner.nextInt();
+
+        char[] DNA = new char[totalSize];
+        DNA = scanner.next().toCharArray();
+        int A = scanner.nextInt();
+        int C = scanner.nextInt();
+        int G = scanner.nextInt();
+        int T = scanner.nextInt();
+
+        int cA=0;
+        int cC=0;
+        int cG=0;
+        int cT=0;
+
+        int res=0;
+
+        for (int j = 0; j < partSize; j++) {
+            switch (DNA[j]){
+                case 'A':
+                    cA++;
+                    break;
+                case 'C':
+                    cC++;
+                    break;
+                case 'G':
+                    cG++;
+                    break;
+                default:
+                    cT++;
+                    break;
+            }
+        }
+        if (cA>=A && cG>=G && cC>=C && cT>=T){
+            res++;
+        }
+
+        for (int i = 1; i < DNA.length-partSize+1; i++) {
+            switch (DNA[i-1]){
+                case 'A':
+                    cA--;
+                    break;
+                case 'C':
+                    cC--;
+                    break;
+                case 'G':
+                    cG--;
+                    break;
+                default:
+                    cT--;
+                    break;
+            }
+
+            switch (DNA[i+partSize-1]){
+                case 'A':
+                    cA++;
+                    break;
+                case 'C':
+                    cC++;
+                    break;
+                case 'G':
+                    cG++;
+                    break;
+                default:
+                    cT++;
+                    break;
+            }
+
+
+            if (cA>=A && cG>=G && cC>=C && cT>=T){
+                res++;
+            }
+        }
+        System.out.println(res);
+    }
 }

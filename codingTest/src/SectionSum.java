@@ -1,5 +1,5 @@
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
+
 
 public class SectionSum {
     //백준 11659
@@ -273,5 +273,49 @@ public class SectionSum {
             }
         }
         System.out.println(res);
+    }
+
+    //백준 11003
+    public void findMinV1(){
+        Scanner scanner = new Scanner(System.in);
+
+        int N = scanner.nextInt();
+        Long[] arr = new Long[N];
+
+        int slideWindowSize = scanner.nextInt();
+
+        Long min = arr[0];
+        System.out.print(min);
+        System.out.print(' ');
+        for (int i=1; i<slideWindowSize;i++){
+            if (arr[i]<min){
+                min = arr[i];
+                System.out.print(min);
+                System.out.print(' ');
+            }
+        }
+
+
+        for(int i=1; i<N-2*slideWindowSize;i++){
+            Long min1 = arr[i];
+            for (int j=0;j<slideWindowSize;j++){
+                if (arr[i]<min1){
+                    min1 = arr[i];
+                }
+            }
+            System.out.print(min);
+            System.out.print(' ');
+        }
+
+        int si=N-slideWindowSize+1;
+        Long min2 = arr[si];
+        for (int i=si; i<N;i++){
+            if (arr[i]<min2){
+                min2 = arr[i];
+                System.out.print(min);
+                System.out.print(' ');
+            }
+        }
+
     }
 }

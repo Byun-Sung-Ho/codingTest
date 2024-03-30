@@ -280,9 +280,12 @@ public class SectionSum {
         Scanner scanner = new Scanner(System.in);
 
         int N = scanner.nextInt();
-        Long[] arr = new Long[N];
-
         int slideWindowSize = scanner.nextInt();
+
+        Long[] arr = new Long[N];
+        for (int i = 0; i<arr.length;i++){
+            arr[i] = scanner.nextLong();
+        }
 
         Long min = arr[0];
         System.out.print(min);
@@ -290,32 +293,70 @@ public class SectionSum {
         for (int i=1; i<slideWindowSize;i++){
             if (arr[i]<min){
                 min = arr[i];
-                System.out.print(min);
-                System.out.print(' ');
             }
+            System.out.print(min);
+            System.out.print(' ');
         }
 
 
         for(int i=1; i<N-2*slideWindowSize;i++){
+            System.out.print('b');
             Long min1 = arr[i];
             for (int j=0;j<slideWindowSize;j++){
                 if (arr[i]<min1){
                     min1 = arr[i];
                 }
             }
-            System.out.print(min);
+            System.out.print(min1);
             System.out.print(' ');
         }
 
         int si=N-slideWindowSize+1;
         Long min2 = arr[si];
         for (int i=si; i<N;i++){
+            System.out.print('c');
             if (arr[i]<min2){
                 min2 = arr[i];
-                System.out.print(min);
-                System.out.print(' ');
             }
+            System.out.print(min2);
+            System.out.print(' ');
         }
 
+    }
+
+    public void findMinV2() {
+        Scanner scanner = new Scanner(System.in);
+
+        int N = scanner.nextInt();
+        int slideWindowSize = scanner.nextInt();
+        int[] arr = new int[N];
+        Deque<Node> deq = new ArrayDeque<>();
+
+        for (int i = 0; i < N; i++) {
+            arr[i] = scanner.nextInt();
+        }
+
+        for (int i = 0; i < N; i++) {
+            while(!deq.isEmpty() && deq.getLast().value > arr[i]){
+                deq.removeLast();
+            }
+            deq.addLast(new Node(i, arr[i]));
+
+            if (deq.getFirst().index<=i-slideWindowSize){
+                deq.removeFirst();
+            }
+
+            System.out.print(deq.getFirst().value + " ");
+        }
+    }
+
+    static class Node{
+        public int index;
+        public int value;
+
+        Node(int index, int value){
+            this.index = index;
+            this.value = value;
+        }
     }
 }

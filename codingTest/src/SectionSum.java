@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.*;
 
 
@@ -348,6 +349,34 @@ public class SectionSum {
 
             System.out.print(deq.getFirst().value + " ");
         }
+    }
+
+    public void findMinV3() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        int N = Integer.parseInt(st.nextToken());
+        int slideWindowSize = Integer.parseInt(st.nextToken());
+
+        Deque<Node> deq = new ArrayDeque<>();
+        st = new StringTokenizer(br.readLine());
+
+        for (int i = 0; i < N; i++) {
+            int now = Integer.parseInt(st.nextToken());
+            while(!deq.isEmpty() && deq.getLast().value > now){
+                deq.removeLast();
+            }
+            deq.addLast(new Node(i, now));
+
+            if (deq.getFirst().index<=i-slideWindowSize){
+                deq.removeFirst();
+            }
+
+            bw.write(deq.getFirst().value + " ");
+        }
+        bw.flush();
+        bw.close();
     }
 
     static class Node{

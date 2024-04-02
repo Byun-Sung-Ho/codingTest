@@ -324,7 +324,7 @@ public class SectionSum {
         }
 
     }
-
+    //백준 11003
     public void findMinV2() {
         Scanner scanner = new Scanner(System.in);
 
@@ -350,7 +350,7 @@ public class SectionSum {
             System.out.print(deq.getFirst().value + " ");
         }
     }
-
+    //백준 11003
     public void findMinV3() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -388,4 +388,6 @@ public class SectionSum {
             this.value = value;
         }
     }
+    //백준 1874
+
 }
